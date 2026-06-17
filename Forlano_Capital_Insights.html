@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <link rel="Icon" href=https://brayden443.github.io/Logo-Picture/Copilot_20260512_204107.png> </link>
+    <title>Client Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forlano Capital Insights</title>
+  <link href="https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Ffonts.googleapis.com%2Fcss2%3Ffamily%3DPlayfair%2BDisplay%3Awght%40400%3B600%3B700%26family%3DLato%3Awght%40300%3B400%3B700%26display%3Dswap&data=05%7C02%7Cbaforlano%40widener.edu%7Caa875c63bc9d436b687308deb2e7835a%7C509e4716869747249169dc73ae0e81a2%7C1%7C0%7C639144904607984167%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=1oLbMZ1AIzoiQoIuJxCITWvP7ilDSx0T1RL7mSqjJqs%3D&reserved=0" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --navy: #0d1b2a;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --cream: #f5f1eb;
+  --gray: #8a9bb0;
+  --white: #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 72px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+.logo span { color: var(--gold); }
+
+nav ul {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+nav ul a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+nav ul a:hover { color: var(--gold); }
+
+.nav-cta {
+  background: var(--gold);
+  color: var(--navy) !important;
+  padding: 10px 22px;
+  border-radius: 2px;
+  font-weight: 700 !important;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  color: var(--white);
+  padding: 100px 48px 90px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 420px; height: 420px;
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 50%;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 280px; height: 280px;
+  border: 1px solid rgba(201,168,76,0.08);
+  border-radius: 50%;
+}
+
+.hero-inner { max-width: 700px; }
+
+.hero-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 560px;
+  margin-bottom: 40px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 14px 36px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--white);
+  padding: 13px 32px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  margin-left: 16px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+/* ── DIVIDER ── */
+.gold-line {
+  width: 60px; height: 2px;
+  background: var(--gold);
+  margin: 0 auto 16px;
+}
+
+/* ── SECTION WRAPPER ── */
+section { padding: 80px 48px; }
+
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+
+/* ── ABOUT ── */
+.about { background: var(--white); }
+
+.about-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.about-divider { background: rgba(13,27,42,0.1); }
+
+.about p {
+  color: #3d4f62;
+  font-size: 1rem;
+}
+
+.stat-block { text-align: center; }
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 8px;
+}
+
+/* ── SERVICES ── */
+.services { background: var(--cream); }
+
+.services-header { text-align: center; margin-bottom: 56px; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid rgba(13,27,42,0.08);
+  border-top: 3px solid var(--gold);
+  padding: 36px 28px;
+  border-radius: 2px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 12px 40px rgba(13,27,42,0.1);
+  transform: translateY(-4px);
+}
+
+.card-icon {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
+
+.price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.price span {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  color: var(--gray);
+  font-weight: 300;
+}
+
+.card.featured {
+  background: var(--navy);
+  border-top-color: var(--gold);
+}
+
+.card.featured h3, .card.featured .price { color: var(--white); }
+.card.featured p { color: rgba(255,255,255,0.6); }
+.card.featured .price span { color: rgba(255,255,255,0.4); }
+
+.badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+/* ── CONTACT ── */
+.contact { background: var(--navy); color: var(--white); text-align: center; }
+
+.contact .section-title { color: var(--white); }
+
+.contact p { color: rgba(255,255,255,0.6); margin-bottom: 40px; font-size: 1rem; }
+
+.contact-methods {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.contact-item { text-align: center; }
+
+.contact-item .method-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.contact-item a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.contact-item a:hover { color: var(--gold); }
+
+/* ── FOOTER ── */
+footer {
+  background: #080f18;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  padding: 24px 48px;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+}
+
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+footer a:hover { color: var(--gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-inner > * {
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-eyebrow { animation-delay: 0.1s; }
+.hero h1      { animation-delay: 0.25s; }
+.hero p       { animation-delay: 0.4s; }
+.hero-btns    { animation-delay: 0.55s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  nav { padding: 0 20px; }
+  nav ul { gap: 16px; }
+  .hero, section { padding: 60px 24px; }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-divider { display: none; }
+  .btn-outline { margin-left: 0; margin-top: 12px; }
+  .hero-btns { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <div class="logo">Forlano <span>Capital</span> Insights</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://brayden443.github.io/Terms-of-Service/Terms_of_Service.html">Terms of Service</a></li>
+    <li><a href="https://brayden443.github.io/Login-Page/Client_Login.html" target="_blank" class="nav-cta"> Client Login</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Financial Clarity for Growing Businesses</p>
+    <h1>Insight-Driven<br>Financial Analysis</h1>
+    <p>Professional financial modeling and analysis services tailored to help small businesses and entrepreneurs make informed, confident decisions.</p>
+    <div class="hero-btns">
+      <a href="https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSf8r-acXa8dgLPjlNehS2svAnhMdLmC8A395ikye_DUyBOpKQ%2Fviewform%3Fusp%3Ddialog&data=05%7C02%7Cbaforlano%40widener.edu%7Caa875c63bc9d436b687308deb2e7835a%7C509e4716869747249169dc73ae0e81a2%7C1%7C0%7C639144904608030529%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=grRLY7FvBHAfrrcbcVeOsghQ8y7QwIzS9w%2FPIxtzjUo%3D&reserved=0" target="_blank" class="btn-primary">Activate Your Account</a>
+      <a href="#services" class="btn-outline">View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <p class="section-label">About</p>
+      <h2 class="section-title">My Investment Banking Foundation</h2>
+      <p>As a Sophomore at Widener University pursuing a career in Investment Banking, I am committed to building expertise through continuous study and hands-on application. I have constructed DCF models in Excel for my Microsoft Information Systems coursework — achieving a 100% — and continue expanding my knowledge of financial analysis every day.</p>
+    </div>
+    <div class="about-divider"></div>
+    <div style="display:flex;flex-direction:column;gap:40px;justify-content:center;">
+      <div class="stat-block">
+        <span class="stat-number">100%</span>
+        <div class="stat-label">DCF Modeling Score</div>
+      </div>
+      <div class="stat-block">
+        <span class="stat-number">3</span>
+        <div class="stat-label">Core Service Offerings</div>
+      </div>
+      <div class="stat-block">
+        <span class="stat-number">∞</span>
+        <div class="stat-label">Commitment to Growth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+  <div class="services-header">
+    <p class="section-label">Services & Pricing</p>
+    <h2 class="section-title">What I Offer</h2>
+    <div class="gold-line"></div>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <span class="card-icon">📊</span>
+      <h3>Break-Even Analysis</h3>
+      <p>Understand exactly when your business becomes profitable with a detailed break-even model and clear reporting.</p>
+      <div class="price">$75 <span>/ month</span></div>
+    </div>
+    <div class="card">
+      <span class="card-icon">💵</span>
+      <h3>12-Month Cash Flow Analysis</h3>
+      <p>A forward-looking cash flow model to help you plan, manage liquidity, and avoid financial surprises.</p>
+      <div class="price">$110 <span>/ month</span></div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📑</span>
+      <h3>Full Financial Plan</h3>
+      <p>A comprehensive financial roadmap covering projections, scenario planning, and strategic recommendations.</p>
+      <div class="price">$400 <span>/ month</span></div>
+    </div>
+    <div class="card featured">
+      <span class="badge">Best Value</span>
+      <span class="card-icon">🏆</span>
+      <h3>Business Bundle</h3>
+  <p>Includes all 3 services: Break-Even Analysis, Full Financial Plan, and 12-month cash flow analysis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Ready to Get Started?</h2>
+  <p>Reach out via email or phone. I typically respond within 24 hours.</p>
+  <div class="contact-methods">
+    <div class="contact-item">
+      <span class="method-label">Email (Preferred)</span>
+      <a href="mailto:slushymagic972@gmail.com">slushymagic972@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <span class="method-label">Phone</span>
+      <a href="tel:+12679015224">(267) 901-5224</a>
+    </div>
+  </div>
+  <a href="https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSf8r-acXa8dgLPjlNehS2svAnhMdLmC8A395ikye_DUyBOpKQ%2Fviewform%3Fusp%3Ddialog&data=05%7C02%7Cbaforlano%40widener.edu%7Caa875c63bc9d436b687308deb2e7835a%7C509e4716869747249169dc73ae0e81a2%7C1%7C0%7C639144904608051470%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=l%2FetCIda%2B%2F28S3D023m3PmtHF8u8eeRmxcwEotd7LXE%3D&reserved=0" target="_blank" class="btn-primary">Complete Account Activation Form</a>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <p>© 2026 Forlano Capital Insights &nbsp;|&nbsp; <a href="https://brayden443.github.io/Terms-of-Service/Terms_of_Service.hmtl">Terms of Service</a> &nbsp;|&nbsp; <a href="https://brayden443.github.io/Login-Page/Client_Login.hmtl">Client Login</a></p>
+</footer>
+
+</body>
+</html>
